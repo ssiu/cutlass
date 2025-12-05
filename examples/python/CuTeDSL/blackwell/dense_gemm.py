@@ -587,6 +587,10 @@ class DenseGemmKernel:
                 swizzle=c_smem_layout_staged.inner,
             )
 
+        if tidx == 0 and bidx == 0 and bidy == 0 and bidz == 0:
+            cute.printf(">?? sC {}", sC.layout)
+
+
         # (MMA, MMA_M, MMA_K, STAGE)
         sA = smem.allocate_tensor(
             element_type=self.a_dtype,
