@@ -587,11 +587,6 @@ class DenseGemmKernel:
                 swizzle=c_smem_layout_staged.inner,
             )
 
-        if tidx == 0 and bidx == 0 and bidy == 0 and bidz == 0:
-            cute.printf(">?? mma_tiler {}", self.mma_tiler)
-            cute.printf(">?? sA {}", sA.layout)
-            cute.printf(">?? sB {}", sB.layout)
-            cute.printf(">?? sC {}", sC.layout)
 
 
         # (MMA, MMA_M, MMA_K, STAGE)
@@ -609,6 +604,12 @@ class DenseGemmKernel:
             swizzle=b_smem_layout_staged.inner,
         )
 
+
+        if tidx == 0 and bidx == 0 and bidy == 0 and bidz == 0:
+            cute.printf(">?? mma_tiler {}", self.mma_tiler)
+            cute.printf(">?? sA {}", sA.layout)
+            cute.printf(">?? sB {}", sB.layout)
+            cute.printf(">?? sC {}", sC.layout)
         #
         # Compute multicast mask for A/B buffer full
         #
