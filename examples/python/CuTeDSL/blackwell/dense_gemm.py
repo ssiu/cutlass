@@ -243,7 +243,8 @@ class DenseGemmKernel:
 
         # Compute mma/cluster/tile shapes
         mma_inst_shape_k = cute.size(tiled_mma.shape_mnk, mode=[2])
-        mma_inst_tile_k = 4
+        # mma_inst_tile_k = 4
+        mma_inst_tile_k = 16
         self.mma_tiler = (
             self.mma_tiler[0],
             self.mma_tiler[1],
