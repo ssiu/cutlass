@@ -835,7 +835,11 @@ class DenseGemmKernel:
 
 
         if tidx == 0 and bidx == 0 and bidy == 0 and bidz == 0:
+            cute.printf(">?? tCgA {}", tCgA.layout)
             cute.printf(">?? tCgC {}", tCgC.layout)
+            cute.printf(">?? tCtAcc {}", tCtAcc.layout)
+            cute.printf(">?? tCrA {}", tCrA.layout)
+            cute.printf(">?? tCrA[kblk_crd] {}", tCrA[kblk_crd].layout)
             cute.printf(">?? epi_tile {}", epi_tile)
 
 
