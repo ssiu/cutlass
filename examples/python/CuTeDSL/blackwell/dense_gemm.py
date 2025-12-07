@@ -1229,6 +1229,7 @@ class DenseGemmKernel:
                 - ab_bytes_per_stage * num_ab_stage
                 - (occupancy + 1) * (mbar_helpers_bytes + c_bytes)
             ) // ((occupancy + 1) * c_bytes_per_stage)
+            print(num_c_stage)
         return num_acc_stage, num_ab_stage, num_c_stage
 
     @staticmethod
