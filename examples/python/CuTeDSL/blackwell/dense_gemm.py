@@ -717,12 +717,6 @@ class DenseGemmKernel:
         # ((atom_v, rest_v), RestK)
         tBgB = tBgB[(None, mma_tile_coord_mnl[1], None, mma_tile_coord_mnl[2])]
 
-        if tidx == 0 and bidx == 0 and bidy == 0 and bidz == 0:
-            cute.printf(">?? tCrA {}", tCrA.layout)
-            cute.printf(">?? tCrB {}", tCrB.layout)
-            cute.printf(">?? acc_shape {}", acc_shape)
-            cute.printf(">?? tCtAcc_fake {}", tCtAcc_fake.layout)
-            cute.printf(">?? tCtAcc {}", tCtAcc.layout)
         #
         # Pipelining TMA load A/B and MMA mainloop
         #
@@ -838,6 +832,12 @@ class DenseGemmKernel:
 
         else:
             self.epilogue(tidx, mma_tile_coord_mnl, tCtAcc, tCgC, epi_tile, epilogue_op)  # type: ignore
+
+
+        if tidx == 0 and bidx == 0 and bidy == 0 and bidz == 0:
+            cute.printf(">?? tCgC {}", tCgC.layout)
+            cute.printf(">?? epi_tile {}", epi_tile)
+
 
         #
         # Dealloc the tensor memory buffer
