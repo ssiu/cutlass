@@ -431,6 +431,7 @@ class DenseGemmKernel:
                 self.epi_tile,
             )
 
+        print(f"tma_tensor_c {tma_tensor_c.layout}")
         # Compute grid size
         grid = self._compute_grid(c, self.cta_tile_shape_mnk, self.cluster_shape_mn)
 
