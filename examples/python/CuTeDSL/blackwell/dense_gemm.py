@@ -281,7 +281,7 @@ class DenseGemmKernel:
             self.epi_tile = self.cta_tile_shape_mnk[:2]
 
 
-        print(self.epi_tile)
+        print(self.epi_tile[0], self.epi_tile[1])
         # Setup A/B/C stage count in shared memory
         self.num_acc_stage, self.num_ab_stage, self.num_c_stage = self._compute_stages(
             tiled_mma,
