@@ -256,6 +256,7 @@ class DenseGemmKernel:
             self.mma_tiler[2],
         )
 
+
         # Compute cluster layout
         self.cluster_layout_vmnk = cute.tiled_divide(
             cute.make_layout((*self.cluster_shape_mn, 1)),
@@ -279,6 +280,8 @@ class DenseGemmKernel:
         else:
             self.epi_tile = self.cta_tile_shape_mnk[:2]
 
+
+        print(self.epi_tile)
         # Setup A/B/C stage count in shared memory
         self.num_acc_stage, self.num_ab_stage, self.num_c_stage = self._compute_stages(
             tiled_mma,
