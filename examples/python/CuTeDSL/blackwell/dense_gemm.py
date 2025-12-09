@@ -320,6 +320,8 @@ class DenseGemmKernel:
             else None
         )
 
+        print(self.num_c_stage)
+        print(self.c_smem_layout_staged)
         # Compute the number of tensor memory allocation columns
         self.num_tmem_alloc_cols = self._compute_num_tmem_alloc_cols(
             tiled_mma, self.mma_tiler
