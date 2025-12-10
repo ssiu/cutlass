@@ -847,6 +847,7 @@ class DenseGemmKernel:
             cute.printf(">?? tCtAcc {}", tCtAcc.layout)
             cute.printf(">?? tCrA {}", tCrA.layout)
             cute.printf(">?? epi_tile {}", epi_tile)
+            print(self.c_layout)
 
 
         #
