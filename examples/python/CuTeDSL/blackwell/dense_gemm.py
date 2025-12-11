@@ -1030,6 +1030,9 @@ class DenseGemmKernel:
             num_stages=self.num_c_stage, producer_group=c_producer_group
         )
 
+        if warp_idx == 0:
+            cute.printf(">?? tTR_tAcc {}", tTR_tAcc.layout)            
+
         #
         # Store accumulator to global memory in sub-tiles
         #
